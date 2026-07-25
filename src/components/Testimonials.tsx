@@ -11,6 +11,15 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const TESTIMONIALS: Testimonial[] = [
   {
+    id: 'ceo',
+    name: 'Qamar Abbas',
+    role: 'Founder & CEO, ABBASU Travels',
+    rating: 5,
+    text: '"Our mission at ABBASU Travels is to connect travelers with the awe-inspiring beauty of Gilgit-Baltistan and Pakistan through world-class service, seamless logistics, and unforgettable mountain journeys."',
+    avatar: '/photos/Qamar.png',
+    isLeader: true,
+  },
+  {
     id: '1',
     name: 'Anum Riaz',
     role: 'Domestic Traveler',
@@ -75,8 +84,9 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section id="testimonials" className="py-24 bg-slate-50">
+    <section id="testimonials-section" className="py-24 bg-slate-50">
       <div
+        id="testimonials"
         ref={ref as React.RefObject<HTMLDivElement>}
         className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ease-out transform ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -86,64 +96,88 @@ export default function Testimonials() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-brand-blue">
-            Client Success
+            Leadership &amp; Client Stories
           </span>
           <h2 className="mt-2 font-display text-3xl sm:text-4xl font-black text-brand-dark tracking-tight">
-            What Our Clients Say
+            Leadership Vision &amp; Client Feedback
           </h2>
           <p className="mt-3 font-sans text-sm sm:text-base text-slate-500">
-            Real stories and direct feedback from travelers exploring Gilgit-Baltistan and across Pakistan.
+            Hear from our Founder and real stories from travelers exploring Gilgit-Baltistan and across Pakistan.
           </p>
           <div className="mt-3 h-1 w-16 bg-brand-orange mx-auto rounded-full" />
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {isLoading
-            ? Array.from({ length: 3 }).map((_, idx) => (
+            ? Array.from({ length: 4 }).map((_, idx) => (
                 <TestimonialSkeleton key={`testimonial-skeleton-${idx}`} />
               ))
-            : TESTIMONIALS.map((t, idx) => (
-            <div
-              key={t.id}
-              id={`testimonial-card-${t.id}`}
-              style={{ transitionDelay: `${idx * 150}ms` }}
-              className={`bg-white border border-slate-100 rounded-3xl p-8 shadow-xl shadow-slate-100 flex flex-col justify-between transition-all duration-700 transform hover:-translate-y-2 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
-              {/* Star Rating & Quote Content */}
-              <div>
-                <div className="flex gap-1 text-amber-400 mb-6">
-                  {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-current" />
-                  ))}
-                </div>
-                <blockquote className="font-sans text-base text-slate-600 leading-relaxed italic">
-                  {t.text}
-                </blockquote>
-              </div>
+            : TESTIMONIALS.map((t, idx) => {
+                const isLeader = t.isLeader;
+                return (
+                  <div
+                    key={t.id}
+                    id={`testimonial-card-${t.id}`}
+                    style={{ transitionDelay: `${idx * 150}ms` }}
+                    className={`rounded-3xl p-7 shadow-xl flex flex-col justify-between transition-all duration-700 transform hover:-translate-y-2 ${
+                      isLeader
+                        ? 'bg-slate-900 border border-slate-800 text-white shadow-slate-900/10'
+                        : 'bg-white border border-slate-100 text-slate-900 shadow-slate-100'
+                    } ${
+                      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                    }`}
+                  >
+                    {/* Badge & Star Rating / Quote Content */}
+                    <div>
+                      {isLeader ? (
+                        <div className="flex items-center justify-between mb-4">
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-brand-orange/20 text-brand-orange border border-brand-orange/30">
+                            Founder's Vision
+                          </span>
+                          <div className="flex gap-1 text-amber-400">
+                            {Array.from({ length: t.rating }).map((_, i) => (
+                              <Star key={i} className="w-4 h-4 fill-current" />
+                            ))}
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="flex gap-1 text-amber-400 mb-6">
+                          {Array.from({ length: t.rating }).map((_, i) => (
+                            <Star key={i} className="w-4 h-4 fill-current" />
+                          ))}
+                        </div>
+                      )}
 
-              {/* Author Info */}
-              <div className="flex items-center gap-4 mt-8 pt-6 border-t border-slate-100">
-                <img
-                  src={t.avatar}
-                  alt={t.name}
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                  className="w-12 h-12 rounded-full object-cover border-2 border-brand-blue/20"
-                />
-                <div>
-                  <h4 className="font-display text-sm font-black text-brand-dark">
-                    {t.name}
-                  </h4>
-                  <p className="text-xs font-semibold text-brand-blue mt-0.5">
-                    {t.role}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
+                      <blockquote className={`font-sans text-sm leading-relaxed italic ${isLeader ? 'text-slate-200' : 'text-slate-600'}`}>
+                        {t.text}
+                      </blockquote>
+                    </div>
+
+                    {/* Author Info */}
+                    <div className={`flex items-center gap-3.5 mt-8 pt-6 border-t ${isLeader ? 'border-slate-800' : 'border-slate-100'}`}>
+                      <img
+                        src={t.avatar}
+                        alt={`${t.name} - ${t.role}`}
+                        loading="lazy"
+                        decoding="async"
+                        referrerPolicy="no-referrer"
+                        className={`w-12 h-12 rounded-full object-cover shrink-0 ${
+                          isLeader ? 'border-2 border-brand-orange ring-2 ring-brand-orange/20' : 'border-2 border-brand-blue/20'
+                        }`}
+                      />
+                      <div>
+                        <h4 className={`font-display text-sm font-black ${isLeader ? 'text-white' : 'text-brand-dark'}`}>
+                          {t.name}
+                        </h4>
+                        <p className={`text-xs font-semibold mt-0.5 ${isLeader ? 'text-amber-300' : 'text-brand-blue'}`}>
+                          {t.role}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
         </div>
       </div>
     </section>

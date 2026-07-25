@@ -56,6 +56,7 @@ export interface Testimonial {
   rating: number;
   text: string;
   avatar: string;
+  isLeader?: boolean;
 }
 
 export interface FAQItem {

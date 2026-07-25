@@ -30,11 +30,11 @@ export default function WhyUs() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="relative rounded-3xl overflow-hidden shadow-2xl h-[450px] md:h-[500px]"
+              className="relative rounded-3xl overflow-hidden shadow-2xl h-[480px] md:h-[520px]"
             >
               <img
                 src="/photos/Qamar.png"
-                alt="ABBASU Travels & Tours travel consulting and client assistance in Gilgit-Baltistan"
+                alt="Qamar Abbas - Founder & CEO of ABBASU Travels & Tours"
                 referrerPolicy="no-referrer"
                 loading="lazy"
                 decoding="async"
