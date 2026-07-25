@@ -2,6 +2,19 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "abbasutravels.com"
+        }
+      ],
+      "destination": "https://www.abbasutravels.com/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/((?!assets/|photos/|favicon.*|apple-touch-icon.*|icon-.*|sitemap\\.xml|robots\\.txt|manifest\\.json).*)",

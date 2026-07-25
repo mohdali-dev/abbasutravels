@@ -3,15 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ABBASU Travels & Tours</title>
+    <title>ABBASU Travels & Tours | Flight Booking & Car Rental Pakistan</title>
     <meta name="description" content="Trusted travel agency in Pakistan offering domestic and international flight booking, tour packages, hotel reservations, visa assistance, and executive car rentals." />
     <meta name="keywords" content="Flight Booking Pakistan, Domestic Flights, International Flights, Car Rental Pakistan, Gilgit Baltistan Travel, Travel Agency Pakistan, Hunza Tours, Skardu Tours, ABBASU Travels" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="author" content="ABBASU Travels &amp; Tours" />
     <meta name="theme-color" content="#0284c7" />
 
-    <!-- Google Search Console Verification Meta Tag Backup -->
-    <meta name="google-site-verification" content="GSC_VERIFICATION_TOKEN" />
+    <!-- Geo & Local SEO -->
+    <meta name="geo.region" content="PK-GB" />
+    <meta name="geo.placename" content="Gilgit-Baltistan, Pakistan" />
+    <meta name="geo.position" content="35.9208;74.3144" />
+    <meta name="ICBM" content="35.9208, 74.3144" />
 
     <!-- Performance & Asset Preconnects -->
     <link rel="preconnect" href="https://images.unsplash.com" />
@@ -20,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://abbasutravels.com/" />
+    <link rel="canonical" href="https://www.abbasutravels.com/" />
 
     <!-- Favicon & PWA Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -33,7 +36,7 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://abbasutravels.com/" />
+    <meta property="og:url" content="https://www.abbasutravels.com/" />
     <meta property="og:title" content="ABBASU Travels & Tours | Flight Booking & Car Rental Pakistan" />
     <meta property="og:description" content="Book domestic &amp; international flights, executive car rentals, and customized tour packages across Gilgit-Baltistan, Hunza, Skardu, and Pakistan." />
     <meta property="og:image" content="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" />
@@ -44,8 +47,8 @@
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://abbasutravels.com/" />
-    <meta name="twitter:title" content="ABBASU Travels &amp; Tours | Flight Booking &amp; Car Rental Pakistan" />
+    <meta name="twitter:url" content="https://www.abbasutravels.com/" />
+    <meta name="twitter:title" content="ABBASU Travels & Tours | Flight Booking & Car Rental Pakistan" />
     <meta name="twitter:description" content="Book domestic &amp; international flights, executive car rentals, and customized tour packages across Gilgit-Baltistan, Hunza, Skardu, and Pakistan." />
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" />
 
@@ -55,15 +58,21 @@
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "TravelAgency",
-          "@id": "https://abbasutravels.com/#organization",
+          "@type": ["TravelAgency", "LocalBusiness"],
+          "@id": "https://www.abbasutravels.com/#organization",
           "name": "ABBASU Travels & Tours",
-          "url": "https://abbasutravels.com",
-          "logo": "https://abbasutravels.com/favicon.svg",
+          "legalName": "ABBASU Travels & Tours",
+          "url": "https://www.abbasutravels.com/",
+          "logo": "https://www.abbasutravels.com/favicon.svg",
           "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-          "description": "Leading travel agency in Pakistan specializing in domestic flights, international flights, car rentals, and guided tours across Gilgit-Baltistan, Hunza, and Skardu.",
-          "telephone": "+923000000000",
-          "email": "info@abbasutravels.com",
+          "description": "Trusted travel agency in Pakistan offering domestic and international flight booking, tour packages, hotel reservations, visa assistance, and executive car rentals.",
+          "founder": {
+            "@type": "Person",
+            "name": "Qamar Abbas",
+            "jobTitle": "Founder & CEO"
+          },
+          "telephone": "+923421458721",
+          "email": "abbasutravelsandtours@gmail.com",
           "priceRange": "$$",
           "address": {
             "@type": "PostalAddress",
@@ -105,15 +114,17 @@
           ],
           "sameAs": [
             "https://facebook.com/abbasutravels",
-            "https://instagram.com/abbasutravels"
+            "https://instagram.com/abbasutravels",
+            "https://twitter.com/abbasutravels",
+            "https://youtube.com/@abbasutravels"
           ],
           "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "customer service",
-            "telephone": "+923000000000",
-            "email": "info@abbasutravels.com",
+            "telephone": "+923421458721",
+            "email": "abbasutravelsandtours@gmail.com",
             "availableLanguage": ["English", "Urdu"],
-            "url": "https://abbasutravels.com"
+            "url": "https://www.abbasutravels.com/#contact"
           },
           "hasOfferCatalog": {
             "@type": "OfferCatalog",
@@ -137,14 +148,14 @@
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "Service",
-                  "name": "Car Rental Pakistan & SUV Hire"
+                  "name": "Executive Car Rental & SUV Hire Pakistan"
                 }
               },
               {
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "Service",
-                  "name": "Gilgit Baltistan Travel, Hunza & Skardu Tours"
+                  "name": "Gilgit-Baltistan, Hunza & Skardu Tours"
                 }
               }
             ]
@@ -152,13 +163,44 @@
         },
         {
           "@type": "WebSite",
-          "@id": "https://abbasutravels.com/#website",
-          "url": "https://abbasutravels.com",
+          "@id": "https://www.abbasutravels.com/#website",
+          "url": "https://www.abbasutravels.com/",
           "name": "ABBASU Travels & Tours",
+          "description": "Book domestic & international flights, executive car rentals, and tour packages in Pakistan.",
           "publisher": {
-            "@id": "https://abbasutravels.com/#organization"
+            "@id": "https://www.abbasutravels.com/#organization"
           },
           "inLanguage": "en-US"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.abbasutravels.com/#webpage",
+          "url": "https://www.abbasutravels.com/",
+          "name": "ABBASU Travels & Tours | Flight Booking & Car Rental Pakistan",
+          "description": "Trusted travel agency in Pakistan offering domestic and international flight booking, tour packages, hotel reservations, visa assistance, and executive car rentals.",
+          "isPartOf": {
+            "@id": "https://www.abbasutravels.com/#website"
+          },
+          "about": {
+            "@id": "https://www.abbasutravels.com/#organization"
+          },
+          "inLanguage": "en-US",
+          "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.abbasutravels.com/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.abbasutravels.com/"
+            }
+          ]
         }
       ]
     }
