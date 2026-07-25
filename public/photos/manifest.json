@@ -1,0 +1,10 @@
+{
+  "description": "Folder for custom photos used in ABBASU TRAVELS & TOURS website",
+  "photos": [
+    {
+      "filename": "sample-hero.jpg",
+      "caption": "Custom Hero Banner Image",
+      "path": "/photos/sample-hero.jpg"
+    }
+  ]
+}

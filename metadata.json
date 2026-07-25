@@ -1,0 +1,6 @@
+{
+  "name": "ABBASU TRAVELS & TOURS",
+  "description": "Premium flight booking and car rental services in Gilgit-Baltistan. Book international & domestic flights, rent SUVs, sedans, and vans with simple WhatsApp-based direct inquiry.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
