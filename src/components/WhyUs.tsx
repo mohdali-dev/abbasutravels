@@ -34,9 +34,10 @@ export default function WhyUs() {
             >
               <img
                 src="/photos/Qamar.png"
-                alt="Consulting with clients"
+                alt="ABBASU Travels & Tours travel consulting and client assistance in Gilgit-Baltistan"
                 referrerPolicy="no-referrer"
                 loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
               {/* Overlay shading */}

@@ -95,12 +95,11 @@ export default function Fleet() {
 
   return (
     <section id="car-rental" className="py-24 bg-white">
-      <motion.div
+      <div
         ref={ref as React.RefObject<HTMLDivElement>}
-        initial={{ opacity: 0, y: 30 }}
-        animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ease-out transform ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
       >
         
         {/* Section Header */}
@@ -124,21 +123,21 @@ export default function Fleet() {
                 <FleetSkeleton key={`fleet-skeleton-${idx}`} />
               ))
             : VEHICLES.map((vehicle, idx) => (
-                <motion.div
+                <div
                   key={vehicle.id}
                   id={`vehicle-card-${vehicle.id}`}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  whileHover={{ y: -8 }}
-                  className="bg-slate-50 border border-slate-100 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                  style={{ transitionDelay: `${idx * 150}ms` }}
+                  className={`bg-slate-50 border border-slate-100 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-700 flex flex-col justify-between transform hover:-translate-y-2 ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}
                 >
                   {/* Vehicle Image */}
                   <div className="h-48 overflow-hidden relative group">
                     <img
                       src={vehicle.image}
-                      alt={vehicle.name}
+                      alt={`${vehicle.name} Car Rental Pakistan - ABBASU Travels`}
                       loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
@@ -189,10 +188,10 @@ export default function Fleet() {
                       <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
-                </motion.div>
+                </div>
               ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

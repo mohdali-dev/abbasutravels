@@ -7,6 +7,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Star } from 'lucide-react';
 import { Testimonial } from '../types';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const TESTIMONIALS: Testimonial[] = [
   {
@@ -35,10 +36,52 @@ const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
+function TestimonialSkeleton() {
+  return (
+    <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-xl shadow-slate-100 flex flex-col justify-between animate-pulse min-h-[260px]">
+      <div>
+        <div className="flex gap-1 mb-6">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div key={i} className="w-5 h-5 rounded-full bg-slate-200" />
+          ))}
+        </div>
+        <div className="space-y-2">
+          <div className="h-4 bg-slate-200 rounded-md w-full animate-pulse" />
+          <div className="h-4 bg-slate-200 rounded-md w-5/6 animate-pulse" />
+          <div className="h-4 bg-slate-200 rounded-md w-2/3 animate-pulse" />
+        </div>
+      </div>
+
+      <div className="flex items-center gap-4 mt-8 pt-6 border-t border-slate-100">
+        <div className="w-12 h-12 rounded-full bg-slate-200 shrink-0 animate-pulse" />
+        <div className="space-y-2 w-full">
+          <div className="h-4 bg-slate-200 rounded-md w-1/3 animate-pulse" />
+          <div className="h-3 bg-slate-200 rounded-md w-1/4 animate-pulse" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Testimonials() {
+  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section id="testimonials" className="py-24 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        ref={ref as React.RefObject<HTMLDivElement>}
+        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ease-out transform ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -56,16 +99,18 @@ export default function Testimonials() {
 
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {TESTIMONIALS.map((t, idx) => (
-            <motion.div
+          {isLoading
+            ? Array.from({ length: 3 }).map((_, idx) => (
+                <TestimonialSkeleton key={`testimonial-skeleton-${idx}`} />
+              ))
+            : TESTIMONIALS.map((t, idx) => (
+            <div
               key={t.id}
               id={`testimonial-card-${t.id}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="bg-white border border-slate-100 rounded-3xl p-8 shadow-xl shadow-slate-100 flex flex-col justify-between"
+              style={{ transitionDelay: `${idx * 150}ms` }}
+              className={`bg-white border border-slate-100 rounded-3xl p-8 shadow-xl shadow-slate-100 flex flex-col justify-between transition-all duration-700 transform hover:-translate-y-2 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
             >
               {/* Star Rating & Quote Content */}
               <div>
@@ -97,7 +142,7 @@ export default function Testimonials() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

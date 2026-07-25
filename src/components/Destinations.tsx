@@ -6,6 +6,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { openWhatsApp } from '../utils/whatsapp';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 interface DestinationItem {
   id: string;
@@ -86,6 +87,7 @@ function DestinationSkeleton() {
 }
 
 export default function Destinations() {
+  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
@@ -103,7 +105,12 @@ export default function Destinations() {
 
   return (
     <section id="destinations" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        ref={ref as React.RefObject<HTMLDivElement>}
+        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ease-out transform ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         
         {/* Header Grid */}
         <div className="grid md:grid-cols-12 gap-6 items-end mb-16 pb-6 border-b border-slate-100">
@@ -129,21 +136,21 @@ export default function Destinations() {
                 <DestinationSkeleton key={`dest-skeleton-${idx}`} />
               ))
             : DESTINATIONS.map((dest, idx) => (
-                <motion.div
+                <div
                   key={dest.id}
                   id={`destination-card-${dest.id}`}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: idx * 0.05 }}
-                  whileHover={{ y: -6, scale: 1.02 }}
+                  style={{ transitionDelay: `${idx * 80}ms` }}
                   onClick={() => handleInquireDestination(dest.name)}
-                  className="group relative h-80 rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-300"
+                  className={`group relative h-80 rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-700 transform hover:-translate-y-2 hover:scale-[1.02] ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}
                 >
                   {/* Image with zoom and lazy load */}
                   <img
                     src={dest.image}
-                    alt={dest.name}
+                    alt={`${dest.name} Tour Package Gilgit Baltistan - ABBASU Travels`}
                     loading="lazy"
+                    decoding="async"
                     referrerPolicy="no-referrer"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
@@ -166,7 +173,7 @@ export default function Destinations() {
                       </svg>
                     </span>
                   </div>
-                </motion.div>
+                </div>
               ))}
         </div>
       </div>

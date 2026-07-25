@@ -17,8 +17,8 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { label: 'Home', href: '#home' },
   { label: 'Flights', href: '#flights' },
-  { label: 'Car Rental', href: '#car-rental' },
   { label: 'Destinations', href: '#destinations' },
+  { label: 'Car Rental', href: '#car-rental' },
   { label: 'Routes Map', href: '#routes-map' },
   { label: 'Why Us', href: '#why-us' },
 ];
@@ -122,7 +122,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav id="desktop-nav" className="hidden md:flex space-x-8 items-center">
+          <nav id="desktop-nav" aria-label="Main Navigation" className="hidden md:flex space-x-8 items-center">
             {NAV_ITEMS.map((item) => {
               const id = item.href.substring(1);
               const isActive = activeSection === id;
@@ -183,7 +183,7 @@ export default function Navbar() {
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
-        <div id="mobile-nav-panel" className="md:hidden bg-white border-t border-gray-100 shadow-inner px-4 py-4 space-y-3">
+        <nav id="mobile-nav-panel" aria-label="Mobile Navigation" className="md:hidden bg-white border-t border-gray-100 shadow-inner px-4 py-4 space-y-3">
           {NAV_ITEMS.map((item) => {
             const id = item.href.substring(1);
             const isActive = activeSection === id;
@@ -217,7 +217,7 @@ export default function Navbar() {
             </svg>
             WhatsApp Us
           </button>
-        </div>
+        </nav>
       )}
     </header>
   );

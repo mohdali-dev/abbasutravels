@@ -44,10 +44,10 @@ export default function Footer() {
   ];
 
   const socials = [
-    { icon: <Facebook className="w-5 h-5" />, href: 'https://facebook.com', label: 'Facebook' },
-    { icon: <Instagram className="w-5 h-5" />, href: 'https://instagram.com', label: 'Instagram' },
-    { icon: <Twitter className="w-5 h-5" />, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: <Youtube className="w-5 h-5" />, href: 'https://youtube.com', label: 'YouTube' },
+    { icon: <Facebook className="w-5 h-5" />, href: 'https://facebook.com/abbasutravels', label: 'Facebook' },
+    { icon: <Instagram className="w-5 h-5" />, href: 'https://instagram.com/abbasutravels', label: 'Instagram' },
+    { icon: <Twitter className="w-5 h-5" />, href: 'https://twitter.com/abbasutravels', label: 'Twitter' },
+    { icon: <Youtube className="w-5 h-5" />, href: 'https://youtube.com/@abbasutravels', label: 'YouTube' },
   ];
 
   return (
